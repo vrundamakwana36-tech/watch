@@ -1,0 +1,4 @@
+# Local server scratch / temporary logs
+*.log
+.DS_Store
+Thumbs.db

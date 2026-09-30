@@ -1,0 +1,9 @@
+{
+  "name": "watch-store",
+  "version": "1.0.0",
+  "description": "GC Chrono Réserve 44 Luxury Watch 3D Scroll Experience",
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p public && cp -r index.html styles.css app.js frames public 2>/dev/null || true"
+  }
+}

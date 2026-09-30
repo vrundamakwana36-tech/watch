@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GC CHRONO RÉSERVE 44 | Haute Horlogerie 3D Experience</title>
+  <meta name="description" content="Explore the GC Chrono Réserve 44 luxury Swiss chronograph through an interactive deconstructed 3D scroll animation experience.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Preloader Screen -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-content">
+      <div class="watch-symbol">
+        <svg viewBox="0 0 100 100" class="ring-svg">
+          <circle cx="50" cy="50" r="44" class="ring-bg"></circle>
+          <circle cx="50" cy="50" r="44" class="ring-fill" id="preloaderRing"></circle>
+        </svg>
+        <div class="symbol-text">GC</div>
+      </div>
+      <h2 class="preloader-title">GC HORLOGERIE SUISSE</h2>
+      <p class="preloader-subtitle">Loading High-Definition Calibre Engine...</p>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="preloaderProgress"></div>
+      </div>
+      <span class="progress-percent" id="preloaderPercent">0%</span>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-monogram">GC</span>
+      <div class="brand-text">
+        <span class="brand-title">GUESS COLLECTION</span>
+        <span class="brand-sub">SWISS PRECISION</span>
+      </div>
+    </div>
+    
+    <div class="nav-controls">
+      <button class="nav-btn" id="audioToggleBtn" title="Toggle Mechanical Audio FX" aria-label="Toggle Audio">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path id="soundWave" d="M11 5L6 9H2v6h4l5 4V5z"></path>
+          <path class="audio-wave" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+        <span class="btn-label" id="audioStatusText">Mute</span>
+      </button>
+
+      <button class="nav-btn" id="autoPlayBtn" title="Auto 360° Explosion Sequence" aria-label="Auto Play">
+        <svg class="icon play-icon" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <svg class="icon pause-icon hidden" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="6" y="4" width="4" height="16"></rect>
+          <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+        <span class="btn-label" id="playBtnText">Auto View</span>
+      </button>
+
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-btn" id="githubNavBtn" title="GitHub Repository" aria-label="GitHub">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+        </svg>
+        <span class="btn-label">GitHub</span>
+      </a>
+
+      <a href="#specs-section" class="nav-btn primary">
+        <span>Specifications</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Scroll Viewport Container -->
+  <main class="scroll-experience" id="scrollContainer">
+
+    <!-- Sticky Visual Canvas Stage -->
+    <div class="canvas-viewport" id="canvasViewport">
+      <!-- Ambient Studio Backlight Glow -->
+      <div class="ambient-glow" id="ambientGlow"></div>
+      
+      <!-- High DPI Canvas -->
+      <canvas id="watchCanvas"></canvas>
+
+      <!-- Exploded View Interactive Hotspots (Visible on frames 15 - 26) -->
+      <div class="hotspots-overlay" id="hotspotsOverlay">
+        
+        <!-- Hotspot 1: Sapphire Crystal Bezel -->
+        <div class="hotspot-node" id="hotspot1" style="top: 38%; left: 16%;" data-title="Sapphire Crystal & Bezel" data-desc="Double-domed anti-reflective sapphire crystal with micro-bolted aerospace steel retaining bezel. Engineered to withstand 100m water depth.">
+          <div class="pulse-ring"></div>
+          <div class="hotspot-dot">1</div>
+          <div class="hotspot-card">
+            <span class="hotspot-tag">ARCHITECTURE</span>
+            <h4>Sapphire Crystal & Outer Bezel</h4>
+            <p>Double-domed anti-reflective sapphire crystal with micro-bolted outer bezel.</p>
+          </div>
+        </div>
+
+        <!-- Hotspot 2: Guilloché Dial & Hands -->
+        <div class="hotspot-node" id="hotspot2" style="top: 48%; left: 33%;" data-title="Sunburst Guilloché Dial" data-desc="Hand-engraved sunburst dial with dual sub-dials, tangerine chronograph indicators, tachymeter ring, and Super-LumiNova indexes.">
+          <div class="pulse-ring"></div>
+          <div class="hotspot-dot">2</div>
+          <div class="hotspot-card">
+            <span class="hotspot-tag">HORLOGERIE</span>
+            <h4>Sunburst Guilloché Dial</h4>
+            <p>Hand-finished dual sub-dials with vibrant tangerine chronograph hands.</p>
+          </div>
+        </div>
+
+        <!-- Hotspot 3: Calibre Escapement & Gears -->
+        <div class="hotspot-node" id="hotspot3" style="top: 40%; left: 49%;" data-title="Swiss Calibre Movement" data-desc="High-precision Swiss-engineered chronograph movement featuring gilded brass gear-train, escapement wheel, and precision quartz regulator.">
+          <div class="pulse-ring"></div>
+          <div class="hotspot-dot">3</div>
+          <div class="hotspot-card">
+            <span class="hotspot-tag">ENGINEERING</span>
+            <h4>Calibre Escapement & Gears</h4>
+            <p>Gilded gear train with Swiss-calibrated chronograph split-second mechanism.</p>
+          </div>
+        </div>
+
+        <!-- Hotspot 4: Monobloc Titanium Case & Crown -->
+        <div class="hotspot-node" id="hotspot4" style="top: 50%; left: 66%;" data-title="Ergonomic Case & Pushers" data-desc="High-grade stainless steel monobloc chassis with knurled screw-down crown and hydraulic dual chronograph trigger pushers.">
+          <div class="pulse-ring"></div>
+          <div class="hotspot-dot">4</div>
+          <div class="hotspot-card">
+            <span class="hotspot-tag">CHASSIS</span>
+            <h4>Ergonomic Case & Pushers</h4>
+            <p>Surgical steel case body with triple-sealed gasket crown and dual pushers.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Live Frame HUD Tracker (Top Right) -->
+      <div class="hud-indicator">
+        <div class="hud-phase-label" id="hudPhase">ASSEMBLED STATE</div>
+        <div class="hud-frame-count">FRAME <span id="hudFrameNumber">01</span> / 40</div>
+        <div class="hud-angle-indicator" id="hudAngle">0&deg; ALIGNED</div>
+      </div>
+    </div>
+
+    <!-- Narrative Scroll Story Chapters (Positioned along the scroll track) -->
+    <div class="narrative-track">
+      
+      <!-- Chapter 1 -->
+      <section class="story-chapter" id="chapter1" data-frame-target="0">
+        <div class="chapter-badge">COLLECTION 2026</div>
+        <h1 class="chapter-heading">GC CHRONO<br><span class="gradient-text">RÉSERVE 44</span></h1>
+        <p class="chapter-desc">
+          Sculpted with surgical-grade precision. An uncompromising union of Swiss horological heritage and avant-garde architectural watchmaking.
+        </p>
+        <div class="scroll-prompt">
+          <div class="mouse-icon">
+            <div class="mouse-wheel"></div>
+          </div>
+          <span>Scroll down to deconstruct</span>
+        </div>
+      </section>
+
+      <!-- Chapter 2 -->
+      <section class="story-chapter left" id="chapter2" data-frame-target="10">
+        <div class="chapter-badge">STAGE 01 • CHASSIS</div>
+        <h2 class="chapter-heading">AEROSPACE<br><span class="gradient-text">GRADE 5 CHASSIS</span></h2>
+        <p class="chapter-desc">
+          Machined from high-density surgical steel and titanium alloys. Secured with hexagonal micro-bolts engineered to withstand 100 meters of hydrostatic pressure.
+        </p>
+        <div class="chapter-specs-mini">
+          <div class="spec-item">
+            <span class="spec-label">DIAMETER</span>
+            <span class="spec-value">44 MM</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">CRYSTAL</span>
+            <span class="spec-value">SAPPHIRE</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">WATER RESIST</span>
+            <span class="spec-value">100 M / 10 ATM</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chapter 3 -->
+      <section class="story-chapter right" id="chapter3" data-frame-target="20">
+        <div class="chapter-badge highlight">STAGE 02 • THE EXPLODED CALIBRE</div>
+        <h2 class="chapter-heading">ANATOMY OF<br><span class="gradient-text">SWISS PRECISION</span></h2>
+        <p class="chapter-desc">
+          Witness the deconstruction of 128 micro-components. The sunburst guilloché dial, sapphire envelope, and precision gilded gear train levitate in mechanical perfection.
+        </p>
+        <div class="action-hints">
+          <span class="hint-pulse"></span>
+          <span>Click on glowing numbered nodes on the watch to inspect individual components</span>
+        </div>
+      </section>
+
+      <!-- Chapter 4 -->
+      <section class="story-chapter left" id="chapter4" data-frame-target="30">
+        <div class="chapter-badge">STAGE 03 • HARMONIC CONVERGENCE</div>
+        <h2 class="chapter-heading">MICRON-LEVEL<br><span class="gradient-text">REALIGNMENT</span></h2>
+        <p class="chapter-desc">
+          Zero-tolerance convergence. Each interlocking plate, jewel, and chronograph spindle pivots back into its hermetically sealed casing.
+        </p>
+        <div class="chapter-specs-mini">
+          <div class="spec-item">
+            <span class="spec-label">TOLERANCE</span>
+            <span class="spec-value">±0.002 MM</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">SUB-DIALS</span>
+            <span class="spec-value">TRIPLE FUNCTION</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chapter 5 -->
+      <section class="story-chapter center" id="chapter5" data-frame-target="39">
+        <div class="chapter-badge">STAGE 04 • THE MASTERPIECE</div>
+        <h2 class="chapter-heading">TIMELESS<br><span class="gradient-text">MAJESTY</span></h2>
+        <p class="chapter-desc">
+          Fully assembled, tested, and certified. Ready to accompany the discerning collector through every altitude and occasion.
+        </p>
+        <div class="chapter-buttons">
+          <button class="action-btn primary" id="exploreSpecsBtn">View Full Specifications</button>
+          <button class="action-btn secondary" id="replayExplosionBtn">Replay Deconstruction</button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Floating Bottom Scrubber Dock -->
+    <div class="scrubber-dock">
+      <div class="dock-inner">
+        <button class="dock-step-btn" id="stepPrevBtn" title="Previous Frame (Left Arrow)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="scrubber-track-container">
+          <div class="scrubber-track" id="scrubberTrack">
+            <div class="scrubber-progress" id="scrubberProgress"></div>
+            <div class="scrubber-thumb" id="scrubberThumb"></div>
+          </div>
+          <div class="scrubber-milestones">
+            <span class="milestone-mark" style="left: 0%;" title="Front View">01</span>
+            <span class="milestone-mark" style="left: 25%;" title="Opening Chassis">10</span>
+            <span class="milestone-mark active-mark" style="left: 50%;" title="Exploded Calibre">20</span>
+            <span class="milestone-mark" style="left: 75%;" title="Reassembly">30</span>
+            <span class="milestone-mark" style="left: 100%;" title="Completed Assembly">40</span>
+          </div>
+        </div>
+
+        <button class="dock-step-btn" id="stepNextBtn" title="Next Frame (Right Arrow)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="dock-divider"></div>
+
+        <button class="dock-icon-btn" id="resetAngleBtn" title="Reset to Frame 1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+        </button>
+
+        <button class="dock-icon-btn" id="fullscreenBtn" title="Toggle Fullscreen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Technical Specifications Showcase Section -->
+  <section class="specs-section" id="specs-section">
+    <div class="specs-container">
+      
+      <div class="specs-header">
+        <span class="specs-tag">TECHNICAL DOSSIER</span>
+        <h2 class="specs-title">GC CHRONOGRAPHE HORLOGERIE</h2>
+        <p class="specs-subtitle">Swiss Made craft meets contemporary industrial architecture.</p>
+      </div>
+
+      <div class="specs-grid">
+        
+        <div class="spec-card">
+          <div class="spec-icon">⚙️</div>
+          <h3>Calibre & Movement</h3>
+          <p class="spec-detail">High-accuracy Swiss Quartz Chronograph movement with instant flyback counter.</p>
+          <ul class="spec-list">
+            <li><span>Complications:</span> 30-min, 60-sec, 1/10-sec subdials</li>
+            <li><span>Date Display:</span> 4 o'clock angled aperture</li>
+            <li><span>Regulator:</span> High-stability quartz crystal</li>
+          </ul>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-icon">🛡️</div>
+          <h3>Case & Architecture</h3>
+          <p class="spec-detail">Surgical grade 316L stainless steel & titanium hybrid monobloc construction.</p>
+          <ul class="spec-list">
+            <li><span>Diameter:</span> 44.0 mm</li>
+            <li><span>Thickness:</span> 12.8 mm</li>
+            <li><span>Bezel:</span> Hexagonal micro-screw secured rim</li>
+            <li><span>Crown:</span> Knurled fluted screw-down</li>
+          </ul>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-icon">💎</div>
+          <h3>Dial & Crystal</h3>
+          <p class="spec-detail">Architectural sunburst guilloché pattern with vibrant high-contrast orange hands.</p>
+          <ul class="spec-list">
+            <li><span>Crystal:</span> Scratch-resistant sapphire with AR coating</li>
+            <li><span>Luminescence:</span> Super-LumiNova coated hands</li>
+            <li><span>Dial Finish:</span> Radial silver brushed texture</li>
+          </ul>
+        </div>
+
+        <div class="spec-card">
+          <div class="spec-icon">🐊</div>
+          <h3>Strap & Ergonomics</h3>
+          <p class="spec-detail">Genuine black alligator-grain calfskin leather strap with contrasting cream stitching.</p>
+          <ul class="spec-list">
+            <li><span>Clasp:</span> Dual-pusher stainless deployment buckle</li>
+            <li><span>Lugs:</span> Articulated ergonomic hex-hinge pins</li>
+            <li><span>Water Resistance:</span> 10 ATM / 100 meters (330 ft)</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Quick Interactive Feature Highlight -->
+      <div class="craft-banner">
+        <div class="banner-content">
+          <span class="banner-tag">HAUTE EXCELLENCE</span>
+          <h3>Swiss Made Heritage</h3>
+          <p>Every GC timepiece is assembled and tested to exceed ISO standards for shock resistance, magnetic immunity, and water tightness.</p>
+        </div>
+        <div class="banner-action">
+          <button class="action-btn primary" id="scrollTopBtn">Experience Scroll Again</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Component Detail Inspection Modal -->
+  <div class="modal-backdrop" id="componentModal">
+    <div class="modal-card">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close Modal">&times;</button>
+      <div class="modal-header">
+        <span class="modal-badge" id="modalBadge">COMPONENT DOSSIER</span>
+        <h3 id="modalTitle">Component Name</h3>
+      </div>
+      <div class="modal-body">
+        <p id="modalDesc">Component detailed breakdown.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="action-btn secondary" id="modalDismissBtn">Return to Interactive View</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="monogram">GC</span>
+        <p>© 2026 GC Swiss Timepieces. All Rights Reserved. Crafted for Haute Horlogerie Enthusiasts.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#canvasViewport">Scroll Experience</a>
+        <a href="#specs-section">Technical Dossier</a>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" id="githubFooterLink" style="display: inline-flex; align-items: center; gap: 6px;">
+          <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
+          </svg>
+          GitHub Repository
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

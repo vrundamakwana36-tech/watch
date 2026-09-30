@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../ezgif-548fe406c1a58b90-jpg"
+		}
+	],
+	"settings": {
+		"powershell.cwd": "watch"
+	}
+}
